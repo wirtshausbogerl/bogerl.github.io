@@ -758,8 +758,11 @@
     p.lead { font-size: 0.95rem; }
     p.body { font-size: 0.85rem; }
     .section-label { font-size: 0.58rem; }
+    .hero-logo { margin-bottom: 2.8rem; }
     .hero-logo img { width: 220px; }
-    .btn-ghost { font-size: 0.58rem; padding: 0.9rem 2rem; }
+    .btn-ghost { font-size: 0.58rem; padding: 0.9rem 2rem; margin-bottom: 2.5rem; }
+    .scroll-hint { bottom: 1.2rem; }
+    .scroll-hint::after { height: 24px; }
     .menu-item { flex-wrap: wrap; }
     .menu-item-name { font-size: 0.95rem; }
     .menu-item-desc { font-size: 0.72rem; }
