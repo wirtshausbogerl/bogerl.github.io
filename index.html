@@ -21,19 +21,29 @@
   html { scroll-behavior: smooth; }
 
   /* ─── FADE-IN ON SCROLL ─── */
-  . {
+  .fade-in {
     opacity: 0;
     transform: translateY(32px);
     transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
                 transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: opacity, transform;
   }
-  ..visible {
+  .fade-in.visible {
     opacity: 1;
     transform: translateY(0);
   }
-  . { transition-delay: 0.12s; }
-  . { transition-delay: 0.24s; }
-  . { transition-delay: 0.36s; }
+  .fade-in-2 { transition-delay: 0.12s; }
+  .fade-in-3 { transition-delay: 0.24s; }
+  .fade-in-4 { transition-delay: 0.36s; }
+
+  /* Respektiert System-Einstellung "Bewegung reduzieren" */
+  @media (prefers-reduced-motion: reduce) {
+    .fade-in {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+  }
 
   body {
     background: var(--dark);
@@ -876,12 +886,12 @@
 <section id="ueber-uns">
   <div class="restaurant-grid" style="grid-template-columns: 1fr;">
     <div>
-      <p class="section-label">Das Restaurant</p>
-      <h2>Wo jeder Teller<br>eine <em>Geschichte</em> erzählt</h2>
-      <div class="divider"></div>
-      <p class="lead">Gute Küche braucht keine großen Worte. Bei uns zählt, was auf dem Teller landet – saisonal, handwerklich und mit einer Prise Eigenem.</p>
+      <p class="section-label fade-in">Das Restaurant</p>
+      <h2 class="fade-in fade-in-2">Wo jeder Teller<br>eine <em>Geschichte</em> erzählt</h2>
+      <div class="divider fade-in fade-in-3"></div>
+      <p class="lead fade-in fade-in-3">Gute Küche braucht keine großen Worte. Bei uns zählt, was auf dem Teller landet – saisonal, handwerklich und mit einer Prise Eigenem.</p>
       <br><br>
-      <p class="body">Inspiriert von regionalen Jahreszeiten und verfeinert durch klassische Techniken, laden wir Sie ein, eine Küche zu erleben, die sich ständig neu erfindet – und dabei stets ihren Wurzeln treu bleibt.</p>
+      <p class="body fade-in fade-in-4">Inspiriert von regionalen Jahreszeiten und verfeinert durch klassische Techniken, laden wir Sie ein, eine Küche zu erleben, die sich ständig neu erfindet – und dabei stets ihren Wurzeln treu bleibt.</p>
     </div>
   </div>
   <!-- Solange nur 1 Foto angezeigt wird: Klasse "foto-galerie--solo" sorgt für
@@ -923,12 +933,12 @@
 <section id="oeffnungstage">
   <div class="opening-grid">
     <div>
-      <p class="section-label">Wann wir für Sie da sind</p>
-      <h2><em>Öffnungszeiten</em></h2>
-      <div class="divider"></div>
-      <p class="body">Wir freuen uns auf Ihren Besuch. Eine Tischreservierung wird empfohlen – besonders an Wochenenden und Feiertagen.</p>
+      <p class="section-label fade-in">Wann wir für Sie da sind</p>
+      <h2 class="fade-in fade-in-2"><em>Öffnungszeiten</em></h2>
+      <div class="divider fade-in fade-in-3"></div>
+      <p class="body fade-in fade-in-3">Wir freuen uns auf Ihren Besuch. Eine Tischreservierung wird empfohlen – besonders an Wochenenden und Feiertagen.</p>
 
-      <table class="opening-table" style="margin-top:2.5rem">
+      <table class="opening-table fade-in fade-in-4" style="margin-top:2.5rem">
         <tr>
           <td>Montag</td>
           <td><span class="tag-open">10:00 – 23:00</span></td>
@@ -986,10 +996,10 @@
 
 <!-- MENÜ -->
 <section id="menue">
-  <p class="section-label">Speisekarte</p>
-  <h2>Das <em>Menü</em></h2>
-  <div class="divider"></div>
-  <p class="lead">Saisonale Aromen, sorgfältig zusammengeführt zu einer stimmigen Komposition.</p>
+  <p class="section-label fade-in">Speisekarte</p>
+  <h2 class="fade-in fade-in-2">Das <em>Menü</em></h2>
+  <div class="divider fade-in fade-in-3"></div>
+  <p class="lead fade-in fade-in-3">Saisonale Aromen, sorgfältig zusammengeführt zu einer stimmigen Komposition.</p>
 
   <div class="menu-columns">
     <div>
@@ -1041,14 +1051,7 @@
         <div class="menu-item">
           <div class="menu-item-left">
             <div class="menu-item-name">Lauwarmer Schokobrownie</div>
-            <div class="menu-item-desc"></div>
-          </div>
-          <div class="menu-item-price">€ X</div>
-        </div>
-        <div class="menu-item">
-          <div class="menu-item-left">
-            <div class="menu-item-name">Hausgemachtes Vanilleeis</div>
-            <div class="menu-item-desc">Mit frischen Früchten</div>
+            <div class="menu-item-desc">Hausgemachtes Vanilleeis · frische Früchte</div>
           </div>
           <div class="menu-item-price">€ X</div>
         </div>
@@ -1119,10 +1122,10 @@
 
 <!-- TEAM -->
 <section id="team">
-  <p class="section-label">Hinter den Kulissen</p>
-  <h2>Unser <em>Team</em></h2>
-  <div class="divider"></div>
-  <p class="lead">Wir sind s'Bogerl.</p>
+  <p class="section-label fade-in">Hinter den Kulissen</p>
+  <h2 class="fade-in fade-in-2">Unser <em>Team</em></h2>
+  <div class="divider fade-in fade-in-3"></div>
+  <p class="lead fade-in fade-in-3">Wir sind s'Bogerl.</p>
 
   <div class="team-grid">
     <div class="team-card">
@@ -1162,9 +1165,9 @@
 
 <!-- KONTAKT -->
 <section id="kontakt">
-  <p class="section-label">Wir sind für Sie da</p>
-  <h2><em>Kontakt</em></h2>
-  <div class="divider"></div>
+  <p class="section-label fade-in">Wir sind für Sie da</p>
+  <h2 class="fade-in fade-in-2"><em>Kontakt</em></h2>
+  <div class="divider fade-in fade-in-3"></div>
 
   <div class="kontakt-grid">
     <div class="kontakt-info">
@@ -1247,21 +1250,27 @@
     });
   });
 
-  // Desktop-Nav: gleiches Offset-Verhalten, damit Sections nicht unter Header verschwinden
-  document.querySelectorAll('header nav a, .logo, .dropdown-menu a').forEach(function(link) {
-    link.addEventListener('click', function(e) {
-      var href = link.getAttribute('href');
-      if (href && href.startsWith('#')) {
-        var target = document.querySelector(href);
-        if (target) {
-          e.preventDefault();
-          var headerHeight = window.innerWidth <= 580 ? 60 : 80;
-          var y = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
-          window.scrollTo({ top: y, behavior: 'smooth' });
+  // ─── FADE-IN ON SCROLL ───
+  // Beobachtet alle Elemente mit .fade-in und blendet sie ein,
+  // sobald sie ins Sichtfeld scrollen. Einmaliger Trigger pro Element.
+  var fadeEls = document.querySelectorAll('.fade-in');
+  if ('IntersectionObserver' in window) {
+    var fadeObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          fadeObserver.unobserve(entry.target);
         }
-      }
+      });
+    }, {
+      threshold: 0.15,
+      rootMargin: '0px 0px -60px 0px'
     });
-  });
+    fadeEls.forEach(function(el) { fadeObserver.observe(el); });
+  } else {
+    // Fallback für sehr alte Browser: einfach alle sichtbar machen
+    fadeEls.forEach(function(el) { el.classList.add('visible'); });
+  }
 </script>
 </body>
 </html>
