@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Datenschutzerklärung – s'Bogerl</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --cream: #f0f5f1;
+    --dark: #2e4a32;
+    --gold: #c9a96e;
+    --mid: #ddc99e;
+    --light-border: rgba(201,169,110,0.28);
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'Montserrat', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--dark);
+    color: var(--cream);
+    font-family: var(--sans);
+    font-weight: 300;
+    line-height: 1.7;
+    min-height: 100vh;
+  }
+
+  /* ─── HEADER ─── */
+  header {
+    padding: 1.6rem 3rem;
+    border-bottom: 0.5px solid var(--light-border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(46,74,50,0.96);
+    backdrop-filter: blur(8px);
+  }
+  .logo {
+    font-family: var(--serif);
+    font-size: 2rem;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    color: var(--cream);
+    text-decoration: none;
+  }
+  .logo span { color: var(--gold); }
+  .back-link {
+    font-family: var(--sans);
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--cream);
+    text-decoration: none;
+    opacity: 0.85;
+    transition: opacity 0.2s, color 0.2s;
+  }
+  .back-link:hover { opacity: 1; color: var(--gold); }
+
+  /* ─── CONTENT ─── */
+  main {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 5rem 2rem 5rem;
+  }
+
+  .section-label {
+    font-size: 0.6rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+    font-weight: 500;
+  }
+
+  h1 {
+    font-family: var(--serif);
+    font-size: clamp(2.4rem, 5vw, 3.6rem);
+    font-weight: 300;
+    letter-spacing: 0.04em;
+    color: #ffffff;
+    line-height: 1.15;
+    margin-bottom: 1.4rem;
+  }
+  h1 em { font-style: italic; color: var(--gold); }
+
+  .divider {
+    width: 40px;
+    height: 1px;
+    background: var(--gold);
+    margin-bottom: 2.5rem;
+    opacity: 0.6;
+  }
+
+  h2 {
+    font-family: var(--serif);
+    font-size: 1.4rem;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    color: var(--gold);
+    margin-top: 2.8rem;
+    margin-bottom: 0.9rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 0.5px solid var(--light-border);
+  }
+
+  h3 {
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    font-weight: 400;
+    color: #ffffff;
+    margin-top: 1.4rem;
+    margin-bottom: 0.4rem;
+    letter-spacing: 0.04em;
+  }
+
+  p, li {
+    font-size: 0.92rem;
+    color: #ffffff;
+    line-height: 1.85;
+    margin-bottom: 0.9rem;
+    letter-spacing: 0.02em;
+  }
+
+  ul {
+    list-style: none;
+    margin-bottom: 1rem;
+  }
+  ul li {
+    padding-left: 1.2rem;
+    position: relative;
+    margin-bottom: 0.4rem;
+  }
+  ul li::before {
+    content: '·';
+    position: absolute;
+    left: 0.3rem;
+    color: var(--gold);
+  }
+
+  a {
+    color: var(--gold);
+    text-decoration: none;
+    border-bottom: 0.5px solid rgba(201,169,110,0.3);
+    transition: color 0.2s, border-color 0.2s;
+  }
+  a:hover {
+    color: #ffffff;
+    border-color: var(--gold);
+  }
+
+  .info-box {
+    border-left: 1px solid var(--gold);
+    padding: 1.1rem 1.4rem;
+    background: rgba(201,169,110,0.04);
+    margin: 1.5rem 0;
+    font-style: italic;
+    color: var(--mid);
+    font-family: var(--serif);
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+  .info-box p { color: var(--mid); margin: 0; }
+
+  /* ─── FOOTER ─── */
+  footer {
+    border-top: 0.5px solid var(--light-border);
+    padding: 2.2rem 3rem;
+    max-width: 1100px;
+    margin: 4rem auto 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.2rem;
+  }
+  .footer-logo {
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    font-weight: 300;
+    letter-spacing: 0.12em;
+    color: var(--mid);
+  }
+  .footer-logo span { color: var(--gold); opacity: 0.7; }
+  .footer-links {
+    display: flex;
+    gap: 1.8rem;
+    flex-wrap: wrap;
+  }
+  .footer-links a {
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--mid);
+    border-bottom: none;
+  }
+  .footer-links a:hover { color: var(--gold); }
+  .footer-copy {
+    font-size: 0.6rem;
+    color: var(--mid);
+    opacity: 0.5;
+    letter-spacing: 0.1em;
+  }
+
+  /* ─── MOBILE ─── */
+  @media (max-width: 700px) {
+    header { padding: 1.2rem 1.5rem; }
+    .logo { font-size: 1.6rem; }
+    main { padding: 3rem 1.4rem 3rem; }
+    h1 { font-size: 2rem; }
+    h2 { font-size: 1.2rem; }
+    footer { padding: 2rem 1.4rem; flex-direction: column; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <a href="bogerl_v3.html" class="logo">s'<span>Bogerl</span></a>
+  <a href="bogerl_v3.html" class="back-link">← Zurück</a>
+</header>
+
+<main>
+  <p class="section-label">Rechtliche Information</p>
+  <h1><em>Datenschutzerklärung</em></h1>
+  <div class="divider"></div>
+
+  <p>Der Schutz Ihrer personenbezogenen Daten ist uns ein besonderes Anliegen. Wir verarbeiten Ihre Daten daher ausschließlich auf Grundlage der gesetzlichen Bestimmungen (DSGVO, Datenschutzgesetz 2018, TKG 2003). In dieser Datenschutzerklärung informieren wir Sie über die wichtigsten Aspekte der Datenverarbeitung im Rahmen unserer Website.</p>
+
+  <h2>Verantwortlich für die Datenverarbeitung</h2>
+  <p>
+    Wirtshaus`Bogerl OG<br>
+    Vertretungsbefugt: Kevin Pessl<br>
+    Kopernikusstraße 17/3, 4400 Steyr, Österreich<br>
+    Telefon: <a href="tel:+346606854103">+34 660 6854103</a><br>
+    E-Mail: <a href="mailto:wirtshaus.bogerl@gmail.com">wirtshaus.bogerl@gmail.com</a>
+  </p>
+
+  <h2>Kontakt mit uns</h2>
+  <p>Wenn Sie per Formular auf der Website, per E-Mail oder telefonisch Kontakt mit uns aufnehmen, werden Ihre angegebenen Daten zwecks Bearbeitung der Anfrage und für den Fall von Anschlussfragen sechs Monate bei uns gespeichert. Diese Daten geben wir nicht ohne Ihre Einwilligung weiter.</p>
+
+  <h2>Reservierungen</h2>
+  <p>Reservierungsanfragen, die Sie uns telefonisch, per E-Mail oder per Kontaktformular übermitteln, werden zur Abwicklung Ihrer Reservierung verarbeitet (Rechtsgrundlage: Vertragserfüllung gem. Art. 6 Abs. 1 lit. b DSGVO). Reservierungsdaten werden nach Abschluss des Aufenthalts gelöscht, sofern keine gesetzlichen Aufbewahrungspflichten (z. B. Buchhaltung) entgegenstehen.</p>
+
+  <h2>Speicherung Ihrer IP-Adresse</h2>
+  <p>Beim Besuch unserer Website werden aus technischen Gründen Daten gespeichert, die der Hostingprovider in seinen Server-Logfiles erfasst. Diese Daten umfassen typischerweise:</p>
+  <ul>
+    <li>IP-Adresse (gekürzt oder anonymisiert)</li>
+    <li>Datum und Uhrzeit des Zugriffs</li>
+    <li>aufgerufene Seite und HTTP-Statuscode</li>
+    <li>Browsertyp und Betriebssystem</li>
+    <li>Referrer-URL (zuvor besuchte Seite)</li>
+  </ul>
+  <p>Die Verarbeitung erfolgt zur Wahrung unserer berechtigten Interessen am sicheren und stabilen Betrieb der Website (Art. 6 Abs. 1 lit. f DSGVO). Eine Zusammenführung dieser Daten mit anderen Datenquellen erfolgt nicht.</p>
+
+  <h2>Cookies</h2>
+  <p>Unsere Website verwendet keine Cookies, die einer Einwilligung bedürfen. Sollten in Zukunft Cookies eingesetzt werden, die nicht technisch notwendig sind, werden wir Sie vorab um Ihre Einwilligung bitten.</p>
+
+  <h2>Eingebettete Inhalte Dritter</h2>
+  <h3>OpenStreetMap</h3>
+  <p>Auf unserer Kontaktseite binden wir Kartenmaterial der OpenStreetMap Foundation (OSMF), St John's Innovation Centre, Cowley Road, Cambridge, CB4 0WS, Vereinigtes Königreich, ein. Beim Aufruf der Seite wird zur Darstellung der Karte eine Verbindung zu Servern der OSMF aufgebaut, wobei Ihre IP-Adresse an diese übermittelt wird.</p>
+  <p>Datenschutzhinweise der OSMF: <a href="https://osmfoundation.org/wiki/Privacy_Policy" target="_blank" rel="noopener">osmfoundation.org/wiki/Privacy_Policy</a></p>
+
+  <h3>Instagram</h3>
+  <p>Auf unserer Website befindet sich ein Verweis (Link) zu unserem Instagram-Profil. Anbieter ist Meta Platforms Ireland Ltd., 4 Grand Canal Square, Dublin 2, Irland. Erst durch Klick auf den Link werden Sie auf die Instagram-Seite weitergeleitet, dabei werden Daten an Meta übermittelt. Es findet keine automatische Übertragung beim bloßen Besuch unserer Website statt.</p>
+  <p>Datenschutzhinweise: <a href="https://privacycenter.instagram.com/policy" target="_blank" rel="noopener">privacycenter.instagram.com/policy</a></p>
+
+  <h3>Google Fonts</h3>
+  <p>Diese Website nutzt zur einheitlichen Darstellung von Schriftarten sogenannte Web Fonts, die von Google bereitgestellt werden (Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland). Beim Aufruf der Seite lädt Ihr Browser die benötigten Schriftarten von Google-Servern. Dabei kann Ihre IP-Adresse an Google übermittelt werden. Die Nutzung erfolgt auf Grundlage unseres berechtigten Interesses an einer ansprechenden Darstellung unserer Website (Art. 6 Abs. 1 lit. f DSGVO).</p>
+  <p>Datenschutzhinweise: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a></p>
+
+  <h2>Ihre Rechte</h2>
+  <p>Ihnen stehen bezüglich Ihrer bei uns gespeicherten Daten grundsätzlich die folgenden Rechte zu:</p>
+  <ul>
+    <li>Recht auf Auskunft (Art. 15 DSGVO)</li>
+    <li>Recht auf Berichtigung (Art. 16 DSGVO)</li>
+    <li>Recht auf Löschung (Art. 17 DSGVO)</li>
+    <li>Recht auf Einschränkung der Verarbeitung (Art. 18 DSGVO)</li>
+    <li>Recht auf Datenübertragbarkeit (Art. 20 DSGVO)</li>
+    <li>Recht auf Widerspruch (Art. 21 DSGVO)</li>
+    <li>Recht auf Widerruf einer erteilten Einwilligung (Art. 7 Abs. 3 DSGVO)</li>
+  </ul>
+  <p>Zur Ausübung dieser Rechte genügt eine formlose Mitteilung an die oben genannten Kontaktdaten.</p>
+
+  <h2>Beschwerderecht</h2>
+  <p>Sollten Sie der Ansicht sein, dass die Verarbeitung Ihrer Daten gegen das Datenschutzrecht verstößt oder Ihre datenschutzrechtlichen Ansprüche sonst in einer Weise verletzt worden sind, können Sie sich bei der zuständigen Aufsichtsbehörde beschweren. In Österreich ist dies die Datenschutzbehörde:</p>
+  <div class="info-box">
+    <p>Österreichische Datenschutzbehörde<br>
+    Barichgasse 40–42, 1030 Wien<br>
+    <a href="https://www.dsb.gv.at" target="_blank" rel="noopener">www.dsb.gv.at</a></p>
+  </div>
+
+  <p style="margin-top: 3rem; font-size: 0.78rem; color: var(--mid); opacity: 0.7;">Stand: Mai 2026</p>
+</main>
+
+<footer>
+  <div class="footer-logo">s'<span>Bogerl</span></div>
+  <div class="footer-links">
+    <a href="impressum.html">Impressum</a>
+    <a href="datenschutz.html">Datenschutz</a>
+  </div>
+  <p class="footer-copy">&copy; 2026 · Alle Rechte vorbehalten</p>
+</footer>
+
+</body>
+</html>

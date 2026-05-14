@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Impressum – s'Bogerl</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --cream: #f0f5f1;
+    --dark: #2e4a32;
+    --gold: #c9a96e;
+    --mid: #ddc99e;
+    --light-border: rgba(201,169,110,0.28);
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'Montserrat', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--dark);
+    color: var(--cream);
+    font-family: var(--sans);
+    font-weight: 300;
+    line-height: 1.7;
+    min-height: 100vh;
+  }
+
+  /* ─── HEADER ─── */
+  header {
+    padding: 1.6rem 3rem;
+    border-bottom: 0.5px solid var(--light-border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(46,74,50,0.96);
+    backdrop-filter: blur(8px);
+  }
+  .logo {
+    font-family: var(--serif);
+    font-size: 2rem;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    color: var(--cream);
+    text-decoration: none;
+  }
+  .logo span { color: var(--gold); }
+  .back-link {
+    font-family: var(--sans);
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--cream);
+    text-decoration: none;
+    opacity: 0.85;
+    transition: opacity 0.2s, color 0.2s;
+  }
+  .back-link:hover { opacity: 1; color: var(--gold); }
+
+  /* ─── CONTENT ─── */
+  main {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 5rem 2rem 5rem;
+  }
+
+  .section-label {
+    font-size: 0.6rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+    font-weight: 500;
+  }
+
+  h1 {
+    font-family: var(--serif);
+    font-size: clamp(2.4rem, 5vw, 3.6rem);
+    font-weight: 300;
+    letter-spacing: 0.04em;
+    color: #ffffff;
+    line-height: 1.15;
+    margin-bottom: 1.4rem;
+  }
+  h1 em { font-style: italic; color: var(--gold); }
+
+  .divider {
+    width: 40px;
+    height: 1px;
+    background: var(--gold);
+    margin-bottom: 2.5rem;
+    opacity: 0.6;
+  }
+
+  h2 {
+    font-family: var(--serif);
+    font-size: 1.4rem;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    color: var(--gold);
+    margin-top: 2.8rem;
+    margin-bottom: 0.9rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 0.5px solid var(--light-border);
+  }
+
+  h3 {
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    font-weight: 400;
+    color: #ffffff;
+    margin-top: 1.4rem;
+    margin-bottom: 0.4rem;
+    letter-spacing: 0.04em;
+  }
+
+  p, li {
+    font-size: 0.92rem;
+    color: #ffffff;
+    line-height: 1.85;
+    margin-bottom: 0.9rem;
+    letter-spacing: 0.02em;
+  }
+
+  ul {
+    list-style: none;
+    margin-bottom: 1rem;
+  }
+  ul li {
+    padding-left: 1.2rem;
+    position: relative;
+    margin-bottom: 0.4rem;
+  }
+  ul li::before {
+    content: '·';
+    position: absolute;
+    left: 0.3rem;
+    color: var(--gold);
+  }
+
+  .meta-table {
+    margin: 1rem 0 1.4rem;
+  }
+  .meta-table .row {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    padding: 0.45rem 0;
+    border-bottom: 0.5px solid rgba(201,169,110,0.12);
+    gap: 1rem;
+  }
+  .meta-table .row:last-child { border-bottom: none; }
+  .meta-table .label {
+    font-family: var(--sans);
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--mid);
+    font-weight: 500;
+    padding-top: 4px;
+  }
+  .meta-table .value {
+    font-family: var(--serif);
+    font-size: 1rem;
+    color: #ffffff;
+  }
+
+  a {
+    color: var(--gold);
+    text-decoration: none;
+    border-bottom: 0.5px solid rgba(201,169,110,0.3);
+    transition: color 0.2s, border-color 0.2s;
+  }
+  a:hover {
+    color: #ffffff;
+    border-color: var(--gold);
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    border-top: 0.5px solid var(--light-border);
+    padding: 2.2rem 3rem;
+    max-width: 1100px;
+    margin: 4rem auto 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.2rem;
+  }
+  .footer-logo {
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    font-weight: 300;
+    letter-spacing: 0.12em;
+    color: var(--mid);
+  }
+  .footer-logo span { color: var(--gold); opacity: 0.7; }
+  .footer-links {
+    display: flex;
+    gap: 1.8rem;
+    flex-wrap: wrap;
+  }
+  .footer-links a {
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--mid);
+    border-bottom: none;
+  }
+  .footer-links a:hover { color: var(--gold); }
+  .footer-copy {
+    font-size: 0.6rem;
+    color: var(--mid);
+    opacity: 0.5;
+    letter-spacing: 0.1em;
+  }
+
+  /* ─── MOBILE ─── */
+  @media (max-width: 700px) {
+    header { padding: 1.2rem 1.5rem; }
+    .logo { font-size: 1.6rem; }
+    main { padding: 3rem 1.4rem 3rem; }
+    h1 { font-size: 2rem; }
+    h2 { font-size: 1.2rem; }
+    .meta-table .row { grid-template-columns: 1fr; gap: 0.2rem; padding: 0.7rem 0; }
+    .meta-table .label { font-size: 0.62rem; }
+    footer { padding: 2rem 1.4rem; flex-direction: column; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <a href="bogerl_v3.html" class="logo">s'<span>Bogerl</span></a>
+  <a href="bogerl_v3.html" class="back-link">← Zurück</a>
+</header>
+
+<main>
+  <p class="section-label">Rechtliche Information</p>
+  <h1><em>Impressum</em></h1>
+  <div class="divider"></div>
+
+  <p>Angaben gemäß § 5 ECG (E-Commerce-Gesetz), § 14 UGB und § 25 Mediengesetz.</p>
+
+  <h2>Medieninhaber und Diensteanbieter</h2>
+  <div class="meta-table">
+    <div class="row">
+      <div class="label">Firma</div>
+      <div class="value">Wirtshaus`Bogerl OG</div>
+    </div>
+    <div class="row">
+      <div class="label">Vertretungsbefugt</div>
+      <div class="value">Kevin Pessl</div>
+    </div>
+    <div class="row">
+      <div class="label">Adresse</div>
+      <div class="value">Kopernikusstraße 17/3<br>4400 Steyr<br>Österreich</div>
+    </div>
+    <div class="row">
+      <div class="label">Telefon</div>
+      <div class="value"><a href="tel:+346606854103">+34 660 6854103</a></div>
+    </div>
+    <div class="row">
+      <div class="label">E-Mail</div>
+      <div class="value"><a href="mailto:wirtshaus.bogerl@gmail.com">wirtshaus.bogerl@gmail.com</a></div>
+    </div>
+  </div>
+
+  <h2>Unternehmensdaten</h2>
+  <div class="meta-table">
+    <div class="row">
+      <div class="label">Unternehmensgegenstand</div>
+      <div class="value">Gastronomiebetrieb / Wirtshaus</div>
+    </div>
+    <div class="row">
+      <div class="label">Rechtsform</div>
+      <div class="value">Offene Gesellschaft (OG)</div>
+    </div>
+    <div class="row">
+      <div class="label">UID-Nummer</div>
+      <div class="value">ATU83164709</div>
+    </div>
+    <div class="row">
+      <div class="label">Firmenbuchnummer</div>
+      <div class="value">[FN-Nummer ergänzen]</div>
+    </div>
+    <div class="row">
+      <div class="label">Firmenbuchgericht</div>
+      <div class="value">Landesgericht Steyr</div>
+    </div>
+    <div class="row">
+      <div class="label">Mitgliedschaft</div>
+      <div class="value">Wirtschaftskammer Österreich · Fachgruppe Gastronomie</div>
+    </div>
+    <div class="row">
+      <div class="label">Berufsrecht</div>
+      <div class="value">Gewerbeordnung (GewO) – abrufbar unter <a href="https://www.ris.bka.gv.at" target="_blank" rel="noopener">ris.bka.gv.at</a></div>
+    </div>
+    <div class="row">
+      <div class="label">Aufsichtsbehörde</div>
+      <div class="value">Bezirkshauptmannschaft Steyr-Land</div>
+    </div>
+  </div>
+
+  <h2>Unternehmensgegenstand der Website</h2>
+  <p>Informationen über das Wirtshaus s'Bogerl, Speisen- und Getränkeangebot, Veranstaltungen sowie Kontakt- und Reservierungsmöglichkeiten.</p>
+
+  <h2>Haftung für Inhalte</h2>
+  <p>Alle Inhalte dieser Website wurden mit größtmöglicher Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der bereitgestellten Inhalte wird jedoch keine Haftung übernommen. Eine Haftung für Schäden, die aus der Nutzung oder Nicht-Nutzung der Informationen entstehen, ist – soweit gesetzlich zulässig – ausgeschlossen.</p>
+
+  <h2>Haftung für Links</h2>
+  <p>Diese Website enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Für diese fremden Inhalte kann daher keine Gewähr übernommen werden. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber verantwortlich.</p>
+
+  <h2>Urheberrecht</h2>
+  <p>Die durch die Betreiber dieser Website erstellten Inhalte und Werke unterliegen dem österreichischen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der vorherigen schriftlichen Zustimmung der jeweiligen Rechteinhaber.</p>
+
+  <h2>Online-Streitbeilegung (OS-Plattform)</h2>
+  <p>Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit, die unter folgendem Link erreichbar ist:</p>
+  <p><a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener">https://ec.europa.eu/consumers/odr</a></p>
+  <p>Verbraucherinnen und Verbraucher haben die Möglichkeit, diese Plattform für die Beilegung ihrer Streitigkeiten zu nutzen. Beschwerden können auch direkt an die oben angegebene E-Mail-Adresse gerichtet werden.</p>
+
+  <p style="margin-top: 3rem; font-size: 0.78rem; color: var(--mid); opacity: 0.7;">Stand: Mai 2026</p>
+</main>
+
+<footer>
+  <div class="footer-logo">s'<span>Bogerl</span></div>
+  <div class="footer-links">
+    <a href="impressum.html">Impressum</a>
+    <a href="datenschutz.html">Datenschutz</a>
+  </div>
+  <p class="footer-copy">&copy; 2026 · Alle Rechte vorbehalten</p>
+</footer>
+
+</body>
+</html>
