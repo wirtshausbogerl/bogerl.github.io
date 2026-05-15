@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" fill="#ffffff"/>
+  <g fill="none" stroke="#000000" stroke-width="22" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Rundbogen (Halbkreis) -->
+    <path d="M 96 360 A 160 160 0 0 1 416 360"/>
+    <!-- Innere Bogenlinie -->
+    <path d="M 136 360 A 120 120 0 0 1 376 360" stroke-width="14"/>
+    <!-- Radiale Fugen (Steine) -->
+    <line x1="256" y1="200" x2="256" y2="240"/>
+    <line x1="176" y1="220" x2="200" y2="252"/>
+    <line x1="336" y1="220" x2="312" y2="252"/>
+    <line x1="120" y1="280" x2="156" y2="296"/>
+    <line x1="392" y1="280" x2="356" y2="296"/>
+    <line x1="220" y1="204" x2="232" y2="244"/>
+    <line x1="292" y1="204" x2="280" y2="244"/>
+    <!-- Sockel links -->
+    <rect x="78" y="360" width="58" height="34" fill="#ffffff"/>
+    <line x1="88" y1="394" x2="126" y2="394"/>
+    <!-- Sockel rechts -->
+    <rect x="376" y="360" width="58" height="34" fill="#ffffff"/>
+    <line x1="386" y1="394" x2="424" y2="394"/>
+  </g>
+
+  <!-- Gekreuztes Messer (von links-unten nach rechts-oben) -->
+  <g stroke="#000000" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" fill="#000000">
+    <!-- Klinge (dreieckig) -->
+    <polygon points="200,330 320,210 332,222 212,342" fill="#ffffff" stroke="#000000"/>
+    <!-- Griff -->
+    <rect x="320" y="210" width="62" height="22" transform="rotate(-45 320 210)" fill="#000000"/>
+    <!-- Nieten am Griff -->
+    <circle cx="343" cy="198" r="3.5" fill="#ffffff"/>
+    <circle cx="357" cy="184" r="3.5" fill="#ffffff"/>
+  </g>
+
+  <!-- Pfeil (von rechts-unten nach links-oben) -->
+  <g stroke="#000000" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" fill="#000000">
+    <!-- Schaft -->
+    <line x1="200" y1="210" x2="320" y2="330"/>
+    <!-- Pfeilspitze -->
+    <polygon points="200,210 228,214 214,228"/>
+    <!-- Befiederung -->
+    <polygon points="320,330 300,338 312,318"/>
+    <polygon points="320,330 338,310 326,322"/>
+  </g>
+
+  <!-- Bodenlinien -->
+  <g stroke="#000000" stroke-width="10" stroke-linecap="round">
+    <line x1="60" y1="394" x2="78" y2="394"/>
+    <line x1="434" y1="394" x2="452" y2="394"/>
+  </g>
+</svg>
