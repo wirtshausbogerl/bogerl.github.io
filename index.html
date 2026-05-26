@@ -522,6 +522,43 @@
     line-height: 1.7;
   }
 
+  /* ─── Gerichte mit mehreren Varianten / Preisen ─── */
+  .menu-item--variants {
+    align-items: flex-start;
+  }
+  .menu-variants {
+    margin-top: 0.4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  .menu-variant {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    font-size: 0.82rem;
+    color: var(--mid);
+    letter-spacing: 0.04em;
+  }
+  .menu-variant-label { flex: 1; }
+  .menu-variant-price {
+    font-family: var(--serif);
+    font-size: 0.92rem;
+    color: var(--mid);
+    white-space: nowrap;
+  }
+  /* Kleiner Zusatz-Hinweis unter einem Hauptpreis (z. B. "ohne Burrata € 14") */
+  .menu-item-subnote {
+    font-family: var(--serif);
+    font-size: 0.78rem;
+    font-style: italic;
+    color: var(--mid);
+    opacity: 0.85;
+    margin-top: 3px;
+    letter-spacing: 0.03em;
+  }
+
   /* ─── ÖFFNUNGSTAGE ─── */
   #oeffnungstage { border-top: 0.5px solid var(--light-border); }
 
@@ -1239,7 +1276,7 @@
         </div>
         <div class="menu-item">
           <div class="menu-item-left">
-            <div class="menu-item-name">Blunzn Pofesen</div>
+            <div class="menu-item-name">Blunzn Pofesn</div>
             <div class="menu-item-desc">Blutwurst · Brioche · Kren · Salat</div>
           </div>
           <div class="menu-item-price">€ 9</div>
@@ -1283,7 +1320,7 @@
         <div class="menu-item">
           <div class="menu-item-left">
             <div class="menu-item-name">Hausgemachtes Apfelschlangerl</div>
-            <div class="menu-item-desc"></div>
+            <div class="menu-item-desc">Schlagobers</div>
           </div>
           <div class="menu-item-price">€ 6</div>
         </div>
@@ -1317,23 +1354,36 @@
         <div class="menu-item">
           <div class="menu-item-left">
             <div class="menu-item-name">Fischfilet des Tages</div>
-            <div class="menu-item-desc">Mit Erbsenpüree</div>
+            <div class="menu-item-desc">Erbsen-Minz-Püree · Kräuterseitlinge · Limette</div>
           </div>
           <div class="menu-item-price">€ 24</div>
         </div>
         <div class="menu-item">
           <div class="menu-item-left">
             <div class="menu-item-name">Tomaten-Basilikum-Pasta <span style="font-size:0.7rem; color:var(--gold); letter-spacing:0.1em; margin-left:0.3rem; opacity:0.85;">vegetarisch</span></div>
-            <div class="menu-item-desc">Burrata · Knoblauch · (ohne Burrata € 14)</div>
+            <div class="menu-item-desc">Burrata · Knoblauch</div>
+            <div class="menu-item-subnote">ohne Burrata · € 14</div>
           </div>
-          <div class="menu-item-price">€ 8</div>
+          <div class="menu-item-price">€ 18</div>
         </div>
-        <div class="menu-item">
+        <div class="menu-item menu-item--variants">
           <div class="menu-item-left">
             <div class="menu-item-name">Frühlingssalat</div>
-            <div class="menu-item-desc">entweder mit gegrillten Hühnerstreifen (€ 15) · mit Hirtenkäse (€ 14) · oder mit gebratenen Kartoffeln u. Pilzen (€ 14)</div>
+            <div class="menu-variants">
+              <div class="menu-variant">
+                <span class="menu-variant-label">mit gegrillten Hühnerstreifen</span>
+                <span class="menu-variant-price">€ 15</span>
+              </div>
+              <div class="menu-variant">
+                <span class="menu-variant-label">mit Hirtenkäse</span>
+                <span class="menu-variant-price">€ 14</span>
+              </div>
+              <div class="menu-variant">
+                <span class="menu-variant-label">mit gebr. Kartoffeln und Pilzen <span style="color:var(--gold); font-size:0.68rem; letter-spacing:0.1em; margin-left:0.2rem; opacity:0.85;">vegan</span></span>
+                <span class="menu-variant-price">€ 14</span>
+              </div>
+            </div>
           </div>
-          <div class="menu-item-price">€ 15</div>
         </div>
       </div>
     </div>
