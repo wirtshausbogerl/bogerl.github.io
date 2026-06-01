@@ -1081,11 +1081,19 @@
     width: 100%; height: 100%;
     object-fit: cover;
     display: block;
-    opacity: 0;
-    transition: opacity 1.2s ease, transform 0.6s ease;
+    will-change: opacity;
+    transition: transform 0.6s ease;
   }
-  .foto-galerie .slide-slot .slide-layer.is-active { opacity: 1; }
-  .foto-galerie .slide-slot:hover .slide-layer.is-active { transform: scale(1.03); }
+  /* Untere Ebene bleibt immer voll sichtbar -> kein Durchscheinen des Hintergrunds */
+  .foto-galerie .slide-slot .slide-base { z-index: 1; opacity: 1; }
+  /* Obere Ebene wird sanft darueber eingeblendet (weiches Crossfade) */
+  .foto-galerie .slide-slot .slide-overlay {
+    z-index: 2;
+    opacity: 0;
+    transition: opacity 1.6s ease-in-out, transform 0.6s ease;
+  }
+  .foto-galerie .slide-slot .slide-overlay.is-visible { opacity: 1; }
+  .foto-galerie .slide-slot:hover .slide-layer { transform: scale(1.03); }
 
 
   /* ─── ZEITLICH BEFRISTETES INFO-POPUP ─── */
@@ -1245,16 +1253,16 @@
        diese index.html. Die drei Flaechen rotieren automatisch durch alle 8. -->
   <div class="foto-galerie slideshow" id="essensSlideshow">
     <div class="foto-gross slide-slot" data-offset="0" style="grid-row: span 2;">
-      <img class="slide-layer is-active" alt="Speisen im Wirtshaus s'Bogerl" loading="lazy">
-      <img class="slide-layer" alt="Speisen im Wirtshaus s'Bogerl" loading="lazy">
+      <img class="slide-layer slide-base" alt="Speisen im Wirtshaus s'Bogerl" loading="lazy">
+      <img class="slide-layer slide-overlay" alt="Speisen im Wirtshaus s'Bogerl" loading="lazy">
     </div>
     <div class="foto-klein slide-slot" data-offset="1">
-      <img class="slide-layer is-active" alt="Speisen im Wirtshaus s'Bogerl" loading="lazy">
-      <img class="slide-layer" alt="Speisen im Wirtshaus s'Bogerl" loading="lazy">
+      <img class="slide-layer slide-base" alt="Speisen im Wirtshaus s'Bogerl" loading="lazy">
+      <img class="slide-layer slide-overlay" alt="Speisen im Wirtshaus s'Bogerl" loading="lazy">
     </div>
     <div class="foto-klein slide-slot" data-offset="2">
-      <img class="slide-layer is-active" alt="Speisen im Wirtshaus s'Bogerl" loading="lazy">
-      <img class="slide-layer" alt="Speisen im Wirtshaus s'Bogerl" loading="lazy">
+      <img class="slide-layer slide-base" alt="Speisen im Wirtshaus s'Bogerl" loading="lazy">
+      <img class="slide-layer slide-overlay" alt="Speisen im Wirtshaus s'Bogerl" loading="lazy">
     </div>
   </div>
 
@@ -1711,14 +1719,17 @@
       return (((index % ANZAHL_BILDER) + ANZAHL_BILDER) % ANZAHL_BILDER) + 1;
     }
 
+    var FADE_MS = 1600; // muss zur CSS-Transition der .slide-overlay passen
+
     var zustand = [];
     slots.forEach(function(slot, i) {
       var offset = parseInt(slot.getAttribute('data-offset'), 10);
       if (isNaN(offset)) offset = i;
-      var layers = slot.querySelectorAll('.slide-layer');
-      layers[0].src = bildName(offset) + ENDUNG;
-      layers[1].src = bildName(offset + anzahlSlots) + ENDUNG;
-      zustand.push({ layers: layers, offset: offset, schritt: 0, aktiv: 0 });
+      var base = slot.querySelector('.slide-base');
+      var overlay = slot.querySelector('.slide-overlay');
+      base.src = bildName(offset) + ENDUNG;                  // aktuell sichtbar
+      overlay.src = bildName(offset + anzahlSlots) + ENDUNG;  // naechstes Bild vorgeladen
+      zustand.push({ base: base, overlay: overlay, offset: offset, schritt: 0 });
     });
 
     // Bei System-Einstellung "Bewegung reduzieren" bleibt das erste Bild stehen
@@ -1726,17 +1737,23 @@
       window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (reduziert) return;
 
-    // Reihum immer nur EINE Flaeche wechseln lassen -> kein gleichzeitiges
-    // Umspringen, sondern ein ruhiger, versetzter Rhythmus.
+    // Weiches Crossfade: Die untere Ebene (base) bleibt voll sichtbar, das neue
+    // Bild wird oben (overlay) darueber eingeblendet -> nie scheint der
+    // Hintergrund durch. Reihum wechselt immer nur EINE Flaeche.
     function weiter(z) {
-      var alt = z.aktiv;
-      var neu = alt === 0 ? 1 : 0;
-      z.layers[neu].classList.add('is-active');
-      z.layers[alt].classList.remove('is-active');
-      z.aktiv = neu;
-      z.schritt++;
-      // Naechstes Bild schon in die jetzt verdeckte Ebene vorladen
-      z.layers[alt].src = bildName(z.offset + (z.schritt + 1) * anzahlSlots) + ENDUNG;
+      z.overlay.classList.add('is-visible'); // neues Bild sanft einblenden
+      setTimeout(function() {
+        z.schritt++;
+        // Neues Bild in die untere Ebene uebernehmen (noch verdeckt, daher unsichtbar)
+        z.base.src = z.overlay.src;
+        // Overlay ohne Animation auf unsichtbar zuruecksetzen ...
+        z.overlay.style.transition = 'none';
+        z.overlay.classList.remove('is-visible');
+        void z.overlay.offsetWidth; // Reflow erzwingen, damit der Reset sofort greift
+        z.overlay.style.transition = ''; // CSS-Transition wieder aktivieren
+        // ... und das uebernaechste Bild schon vorladen
+        z.overlay.src = bildName(z.offset + (z.schritt + 1) * anzahlSlots) + ENDUNG;
+      }, FADE_MS);
     }
 
     var aktuellerSlot = 0;
