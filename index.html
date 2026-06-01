@@ -1726,18 +1726,24 @@
       window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (reduziert) return;
 
+    // Reihum immer nur EINE Flaeche wechseln lassen -> kein gleichzeitiges
+    // Umspringen, sondern ein ruhiger, versetzter Rhythmus.
+    function weiter(z) {
+      var alt = z.aktiv;
+      var neu = alt === 0 ? 1 : 0;
+      z.layers[neu].classList.add('is-active');
+      z.layers[alt].classList.remove('is-active');
+      z.aktiv = neu;
+      z.schritt++;
+      // Naechstes Bild schon in die jetzt verdeckte Ebene vorladen
+      z.layers[alt].src = bildName(z.offset + (z.schritt + 1) * anzahlSlots) + ENDUNG;
+    }
+
+    var aktuellerSlot = 0;
     setInterval(function() {
-      zustand.forEach(function(z) {
-        var alt = z.aktiv;
-        var neu = alt === 0 ? 1 : 0;
-        z.layers[neu].classList.add('is-active');
-        z.layers[alt].classList.remove('is-active');
-        z.aktiv = neu;
-        z.schritt++;
-        // Naechstes Bild schon in die jetzt verdeckte Ebene vorladen
-        z.layers[alt].src = bildName(z.offset + (z.schritt + 1) * anzahlSlots) + ENDUNG;
-      });
-    }, INTERVALL);
+      weiter(zustand[aktuellerSlot]);
+      aktuellerSlot = (aktuellerSlot + 1) % anzahlSlots;
+    }, Math.round(INTERVALL / anzahlSlots));
   })();
 
   // ─── ZEITLICH BEFRISTETES INFO-POPUP ───
