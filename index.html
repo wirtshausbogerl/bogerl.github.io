@@ -1404,6 +1404,7 @@
         <div>
           <h4 style="font-family:var(--serif); font-size:1rem; font-weight:400; color:var(--cream); margin-bottom:0.5rem;" data-dialekt="Urlaub">Urlaub</h4>
           <p class="body" data-dialekt="Wann ma auf Urlaub san und zuagsperrt is, sog ma eich rechtzeitig do auf da Seitn und a auf Instagram und so Bescheid.">Unsere Urlaubs- und Schließzeiten geben wir rechtzeitig auf dieser Seite sowie auf unseren Social-Media-Kanälen bekannt.</p>
+           <p class="body" data-dialekt="Mia san ned do von von Mi. 09.09.bis Do. 24.09."> Wir sind von Mi. 04.09. bis Do. 24.09. auf Urlaub!</p>
         </div>
       </div>
     </div>
@@ -1837,11 +1838,18 @@
   // Datumsangaben als [Jahr, Monat, Tag] mit Monat NORMAL gezaehlt
   // (1 = Januar ... 12 = Dezember).
   (function() {
-    // ===================== HIER ANPASSEN =====================
-    var LABEL = 'Wir freuen uns auf euch';               // kleine Zeile oben ('' = ausblenden)
-    var TEXT  = 'Neueröffnung am <span>04.06.</span>!';   // Hauptzeile; <span>..</span> = goldene Hervorhebung
-    var VON   = null;                                     // ab wann zeigen? null = sofort, sonst z.B. [2026, 7, 8]
-    var BIS   = [2026, 6, 4];                             // ab wann ausblenden? [2026, 6, 4] = ab 04.06.2026
+
+  // ===================== HIER ANPASSEN =====================
+    var LABEL = 'Hinweis';                                          // kleine Zeile oben ('' = ausblenden)
+    var TEXT  = 'Wir machen Urlaub von <span>04.09. bis 24.09.</span>';  // Hauptzeile; <span>..</span> = goldene Hervorhebung
+    var VON   = [2026, 8, 20];                                      // ab wann zeigen? hier: ab 20.08.2026
+    var BIS   = [2026, 9, 25];                                      // ab wann ausblenden? hier: ab 25.09.2026
+    // ---------------------------------------------------------
+  // ===================== HIER ANPASSEN =====================
+  //  var LABEL = 'Wir freuen uns auf euch';               // kleine Zeile oben ('' = ausblenden)
+  //  var TEXT  = 'Neueröffnung am <span>04.06.</span>!';   // Hauptzeile; <span>..</span> = goldene Hervorhebung
+  //  var VON   = null;                                     // ab wann zeigen? null = sofort, sonst z.B. [2026, 7, 8]
+  //  var BIS   = [2026, 6, 4];                             // ab wann ausblenden? [2026, 6, 4] = ab 04.06.2026
     // ---------------------------------------------------------
     // Beispiel Betriebsurlaub – einfach die vier Zeilen oben ersetzen:
     //   var LABEL = 'Hinweis';
