@@ -1005,6 +1005,30 @@
   margin-top: 0.3rem;
 }
 
+/* ─── PARTNER-HINWEIS ─── */
+.partner-block {
+  margin-top: 4rem;
+  padding-top: 3rem;
+  border-top: 0.5px solid var(--light-border);
+  text-align: center;
+}
+.partner-label {
+  font-family: var(--sans);
+  font-size: 0.58rem;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  opacity: 0.85;
+  margin-bottom: 1.4rem;
+}
+.partner-logo {
+  width: 200px;
+  max-width: 60%;
+  height: auto;
+  display: inline-block;
+}
+
   /* ─── MOBILE NAV ─── */
   .mobile-nav {
     display: flex;
@@ -1635,13 +1659,13 @@
   <p class="section-label fade-in" data-dialekt="Wos guads ins Glasl">Tradition im Glas</p>
   <h2 class="fade-in fade-in-2" data-dialekt="Unsa <em>Empfehlungen</em>">Unsere <em>Empfehlungen</em></h2>
   <div class="divider fade-in fade-in-3"></div>
-  <p class="lead fade-in fade-in-3" data-dialekt="A poar Tipps vo uns – vom Apperitiv bis zum Schlucki danoch.">Ein paar Tipps von uns – vom Aperitif bis zum Absacker.</p>
+  <p class="lead fade-in fade-in-3" data-dialekt="A poar Tipps vo uns – vom Aperitif bis zum Schlucki danoch.">Ein paar Tipps von uns – vom Aperitif bis zum Absacker.</p>
 
   <div class="getraenke-liste">
     <div class="getraenke-item fade-in fade-in-2">
       <p class="getraenke-anlass" data-dialekt="Zum Stoatn">Zum Start</p>
       <div class="getraenke-zeile">
-        <span class="getraenke-name">Bogerl Apperitiv</span>
+        <span class="getraenke-name">Bogerl Aperitif</span>
         <span class="getraenke-preis">€ 6,50</span>
       </div>
       <p class="getraenke-desc" data-dialekt="Ohne Alkohol – unsa Namensgeba zum Ostoßn.">Alkoholfrei – unser Namensgeber zum Anstoßen.</p>
@@ -1683,18 +1707,19 @@
       <p class="getraenke-desc" data-dialekt="Pur oda gspritzt – echt boanstänsig.">Pur oder gespritzt – ehrlich und bodenständig.</p>
     </div>
 
-    <!-- HAUSGEMACHTER LIMONCELLO – auskommentiert, bis der Preis feststeht.
-         Zum Aktivieren einfach die umschließenden Kommentarzeichen entfernen
-         und € __ durch den Preis ersetzen.
     <div class="getraenke-item fade-in fade-in-4">
       <p class="getraenke-anlass" data-dialekt="Zum Obschluss">Zum Abschluss</p>
       <div class="getraenke-zeile">
         <span class="getraenke-name">Hausgemachter Limoncello</span>
-        <span class="getraenke-preis">€ __</span>
+        <span class="getraenke-preis">2 cl € 3 · 4 cl € 5</span>
       </div>
       <p class="getraenke-desc" data-dialekt="Söwa gmocht – a aa ois Spritz zum hom.">Selbstgemacht – auch als Spritz erhältlich.</p>
     </div>
-    -->
+  </div>
+
+  <div class="partner-block fade-in">
+    <p class="partner-label" data-dialekt="Stoiza Partner vo">Stolzer Partner von</p>
+    <img class="partner-logo" src="freistaedter-logo.png" alt="Freistädter Bier – Braucommune in Freistadt" loading="lazy">
   </div>
 </section>
   
