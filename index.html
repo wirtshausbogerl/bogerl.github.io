@@ -72,21 +72,8 @@
 </script>
 
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
 <style>
-  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-  :root {
-    --cream: #f0f5f1;
-    --dark: #2e4a32;
-    --gold: #c9a96e;
-    --mid: #ddc99e;
-    --light-border: rgba(201,169,110,0.28);
-    --serif: 'Cormorant Garamond', Georgia, serif;
-    --sans: 'Montserrat', sans-serif;
-  }
-
-  html { scroll-behavior: smooth; }
-
   /* ─── FADE-IN ON SCROLL ─── */
   .fade-in {
     opacity: 0;
@@ -130,6 +117,9 @@
     align-items: center;
     justify-content: space-between;
     height: 80px;
+    background: transparent;
+    border-bottom: none;
+    backdrop-filter: none;
     transition: background 0.4s, box-shadow 0.4s;
   }
   header.scrolled {
@@ -1090,6 +1080,7 @@
   /* ─── RESPONSIVE ─── */
   @media (max-width: 900px) {
     header { padding: 0 1.5rem; }
+    .logo { font-size: 2.5rem; }
     nav { display: none; }
     label.hamburger { cursor: pointer; }
     .hamburger {
