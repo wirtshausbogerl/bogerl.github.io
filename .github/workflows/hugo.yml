@@ -1,0 +1,70 @@
+# Baut die Seite mit Hugo und veröffentlicht sie auf GitHub Pages.
+# Voraussetzung (einmalig): Settings → Pages → Build and deployment → Source: "GitHub Actions"
+name: Seite bauen und veröffentlichen
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Nur ein Deployment gleichzeitig; laufende Deployments nicht abbrechen
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      HUGO_VERSION: 0.152.2
+      HUGO_ENVIRONMENT: production
+      TZ: Europe/Vienna
+    steps:
+      - name: Hugo installieren
+        run: |
+          curl -sSLo "${{ runner.temp }}/hugo.deb" \
+            "https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_${HUGO_VERSION}_linux-amd64.deb"
+          sudo dpkg -i "${{ runner.temp }}/hugo.deb"
+          hugo version
+
+      - name: Code auschecken
+        uses: actions/checkout@v4
+
+      - name: GitHub Pages konfigurieren
+        id: pages
+        uses: actions/configure-pages@v5
+
+      - name: Cache für verkleinerte Bilder
+        uses: actions/cache@v4
+        with:
+          path: resources/_gen
+          key: hugo-resources-${{ hashFiles('assets/images/**') }}
+          restore-keys: hugo-resources-
+
+      - name: Seite bauen
+        run: hugo --gc --minify
+
+      - name: Ergebnis hochladen
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./public
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Auf GitHub Pages veröffentlichen
+        id: deployment
+        uses: actions/deploy-pages@v4

@@ -1,0 +1,47 @@
+{{- /* Firmen- und Kontaktdaten aus hugo.toml → [params]
+       Aufruf: {{< stammdaten "inhaber" >}}, "unternehmen" oder "verantwortlich" */ -}}
+{{- $p := site.Params -}}
+{{- $art := .Get 0 -}}
+{{- $tel := printf `<a href="tel:%s">%s</a>` $p.telefon $p.telefonAnzeige -}}
+{{- $mail := printf `<a href="mailto:%s">%s</a>` $p.email $p.email -}}
+{{- if eq $art "verantwortlich" }}
+<p>
+  {{ $p.firma }}<br>
+  Vertretungsbefugt: {{ delimit $p.vertretung ", " }}<br>
+  {{ $p.strasse }}, {{ $p.plz }} {{ $p.ort }}, {{ $p.land }}<br>
+  Telefon: {{ $tel | safeHTML }}<br>
+  E-Mail: {{ $mail | safeHTML }}
+</p>
+{{- else }}
+{{- $zeilen := slice }}
+{{- if eq $art "inhaber" }}
+  {{- $zeilen = slice
+    (slice "Firma" $p.firma)
+    (slice "Vertretungsbefugt" (delimit $p.vertretung "<br>"))
+    (slice "Adresse" (printf "%s<br>%s %s<br>%s" $p.strasse $p.plz $p.ort $p.land))
+    (slice "Telefon" $tel)
+    (slice "E-Mail" $mail)
+  }}
+{{- else if eq $art "unternehmen" }}
+  {{- $zeilen = slice
+    (slice "Unternehmensgegenstand" "Gastronomiebetrieb / Wirtshaus")
+    (slice "Rechtsform" "Offene Gesellschaft (OG)")
+    (slice "UID-Nummer" $p.uid)
+    (slice "Firmenbuchnummer" $p.firmenbuchnummer)
+    (slice "Firmenbuchgericht" $p.firmenbuchgericht)
+    (slice "Mitgliedschaft" "Wirtschaftskammer Österreich · Fachgruppe Gastronomie")
+    (slice "Berufsrecht" `Gewerbeordnung (GewO) – abrufbar unter <a href="https://www.ris.bka.gv.at" target="_blank" rel="noopener">ris.bka.gv.at</a>`)
+    (slice "Aufsichtsbehörde" $p.aufsichtsbehoerde)
+  }}
+{{- else }}
+  {{- errorf "stammdaten: unbekannte Art %q in %s" $art .Position }}
+{{- end }}
+<dl class="meta-table">
+  {{- range $zeilen }}
+  <div class="row">
+    <dt class="label">{{ index . 0 }}</dt>
+    <dd class="value">{{ index . 1 | safeHTML }}</dd>
+  </div>
+  {{- end }}
+</dl>
+{{- end }}

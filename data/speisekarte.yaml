@@ -1,0 +1,75 @@
+# Speisekarte
+# Reihenfolge der Kategorien = Reihenfolge am Handy.
+# "spalte" legt fest, in welcher Spalte die Kategorie am großen Bildschirm steht.
+# Gerichte mit mehreren Preisen: statt "preis" eine Liste "varianten".
+# "tags" erscheinen als goldene Kennzeichnung (z. B. vegetarisch, vegan).
+
+kategorien:
+  - name: Vorspeisen
+    spalte: 1
+    gerichte:
+      - name: Wirtshaus-Caprese
+        beschreibung: Tomate · Mozzarella · Basilikum
+        preis: 8
+      - name: Blunzn Pofesn
+        beschreibung: Blutwurst · Tramezzini · Kren · Salat
+        preis: 9
+      - name: Rinder Carpaccio
+        beschreibung: Ruccola · Hausgemachte Mayo · Grana Padano · Olivenöl aus Aschach/Steyr
+        preis: 14
+
+  - name: Suppen
+    spalte: 1
+    gerichte:
+      - name: Rindsuppe
+        beschreibung: Frittaten oder Kaspressknödel
+        preis: 5
+      - name: Knoblauchcremesuppe
+        beschreibung: Croutons
+        preis: 6
+
+  - name: Hauptspeisen
+    spalte: 2
+    gerichte:
+      - name: Schnitzerl vom Schwein
+        beschreibung: Petersilienkartoffel · Preiselbeeren
+        preis: 17
+      - name: Gekochtes Rindfleisch
+        beschreibung: Semmelkren · Erdäpfelschmarrn · Karotterl
+        preis: 18
+      - name: Rosa gebratenes Beiried
+        beschreibung: Kürbispüree · Rosmarinkartoffel · Jus
+        preis: 28
+      - name: Rehbraten von der Keule
+        beschreibung: Semmelknödel · Rotkraut · Jus
+        preis: 23
+      - name: Geschmorte Schweinsbackerl
+        beschreibung: Steinpilzpasta · Schmorsafterl
+        preis: 22
+      - name: Forellenfilet (aus Wartberg)
+        beschreibung: Kürbisrisotto · Kürbisspalte · Kernölschaum
+        preis: 25
+      - name: Kürbisrisotto
+        tags: [vegetarisch]
+        beschreibung: Kernöl · Ruccola
+        hinweis: auch vegan möglich
+        preis: 17
+      - name: Blattsalate
+        varianten:
+          - name: mit gegrillten Hühnerstreifen
+            preis: 16
+          - name: mit Kaspressknödel
+            preis: 15
+          - name: mit gebratenem Kürbis und Kernöl
+            tags: [vegan]
+            preis: 15
+
+  - name: Desserts
+    spalte: 1
+    gerichte:
+      - name: Dunkles Schokomousse
+        beschreibung: Zwetschgenragout · Spekulatius
+        preis: 7
+      - name: Hausgemachtes Apfelschlangerl
+        beschreibung: Vanilleeis · Schlagobers
+        preis: 7

@@ -1,0 +1,288 @@
+{{ define "main" }}
+{{- $s := .Params -}}
+{{- $p := site.Params -}}
+
+<!-- HERO -->
+<div id="restaurant" class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-line"></div>
+  <div class="hero-content">
+    {{- with resources.Get "images/logo.png" }}
+    {{- $logo := .Resize "760x png" }}
+    <div class="hero-logo"><img src="{{ $logo.RelPermalink }}" width="{{ div $logo.Width 2 }}" height="{{ div $logo.Height 2 }}" alt="Logo s'Bogerl"></div>
+    {{- end }}
+    <p class="eyebrow" data-dialekt="{{ $s.hero.eyebrow_dialekt }}">{{ $s.hero.eyebrow }}</p>
+    <h1>s'<em>Bogerl</em></h1>
+    <p class="hero-tagline" data-dialekt="{{ $s.hero.tagline_dialekt }}">{{ $p.slogan }}</p>
+    <a href="#ueber-uns" class="btn-ghost" data-dialekt="{{ $s.hero.button_dialekt }}">{{ $s.hero.button }}</a>
+  </div>
+</div>
+
+<!-- DAS RESTAURANT -->
+{{- with $s.restaurant }}
+<section id="ueber-uns">
+  <p class="section-label fade-in" data-dialekt="{{ .label_dialekt }}">{{ .label }}</p>
+  <h2 class="fade-in fade-in-2" data-dialekt="{{ .titel_dialekt }}">{{ .titel | safeHTML }}</h2>
+  <div class="divider fade-in fade-in-3"></div>
+  <p class="lead fade-in fade-in-3" data-dialekt="{{ .lead_dialekt }}">{{ .lead }}</p>
+  <p class="body body--abstand fade-in fade-in-4" data-dialekt="{{ .text_dialekt }}">{{ .text }}</p>
+
+  {{- /* Essensfotos: alle Bilder aus assets/images/galerie/ rotieren durch die drei Flächen */}}
+  {{- $bilder := slice }}
+  {{- range sort (resources.Match "images/galerie/*") "Name" }}
+    {{- $bilder = $bilder | append (.Resize "1200x jpg q78").RelPermalink }}
+  {{- end }}
+  {{- with $bilder }}
+  {{- $n := len . }}
+  <div class="foto-galerie" id="essensSlideshow" data-bilder="{{ . | jsonify }}">
+    {{- range $i, $klasse := slice "foto-gross" "foto-klein" "foto-klein" }}
+    <div class="{{ $klasse }} slide-slot" data-offset="{{ $i }}">
+      <img class="slide-layer slide-base" src="{{ index $bilder (mod $i $n) }}" alt="Speisen im Wirtshaus s'Bogerl" loading="lazy">
+      <img class="slide-layer slide-overlay" src="{{ index $bilder (mod (add $i 3) $n) }}" alt="" aria-hidden="true" loading="lazy">
+    </div>
+    {{- end }}
+  </div>
+  {{- end }}
+</section>
+{{- end }}
+
+<!-- MOTTO -->
+{{- with $s.motto }}
+<section id="motto" class="motto">
+  <div class="divider divider--mitte fade-in"></div>
+  <p class="section-label fade-in fade-in-2" data-dialekt="{{ .label_dialekt }}">{{ .label }}</p>
+  <p class="motto-text fade-in fade-in-3" data-dialekt="{{ .text_dialekt }}">{{ .text | safeHTML }}</p>
+  <div class="divider divider--mitte fade-in fade-in-3"></div>
+</section>
+{{- end }}
+
+<!-- ÖFFNUNGSZEITEN -->
+{{- with $s.oeffnungszeiten }}
+{{- $daten := site.Data.oeffnungszeiten }}
+<section id="oeffnungstage" class="trennlinie">
+  <div class="opening-grid">
+    <div>
+      <p class="section-label fade-in" data-dialekt="{{ .label_dialekt }}">{{ .label }}</p>
+      <h2 class="fade-in fade-in-2" data-dialekt="{{ .titel_dialekt }}">{{ .titel | safeHTML }}</h2>
+      <div class="divider fade-in fade-in-3"></div>
+      <p class="body fade-in fade-in-3" data-dialekt="{{ .text_dialekt }}">{{ .text }}</p>
+
+      <table class="opening-table fade-in fade-in-4">
+        {{- range $daten.tage }}
+        <tr>
+          <td>{{ .tag }}</td>
+          <td>{{ with .zeiten }}{{ delimit . " · " }}{{ else }}<span class="tag-closed" data-dialekt="Ruhetog">Ruhetag</span>{{ end }}</td>
+        </tr>
+        {{- end }}
+      </table>
+    </div>
+    <div>
+      <p class="section-label" data-dialekt="{{ .hinweise_label_dialekt }}">{{ .hinweise_label }}</p>
+      <div class="hinweise">
+        {{- range $h := .hinweise }}
+        <div>
+          <h3 class="hinweis-titel" data-dialekt="{{ .titel_dialekt }}">{{ .titel }}</h3>
+          {{- if .warme_kueche }}
+          <p class="body">{{ delimit $daten.warme_kueche " · " }}</p>
+          {{- end }}
+          {{- with .text }}
+          <p class="body" data-dialekt="{{ $h.text_dialekt }}">{{ . }}</p>
+          {{- end }}
+          {{- if .urlaub }}
+          {{- range partial "urlaub-daten.html" $ }}
+          <p class="urlaub-hinweis" data-bis="{{ .bis_exklusiv }}">
+            <span class="urlaub-label" data-dialekt="Mia san ned do">Betriebsurlaub</span>{{ .zeitraum }}
+          </p>
+          {{- end }}
+          {{- end }}
+        </div>
+        {{- end }}
+      </div>
+    </div>
+  </div>
+</section>
+{{- end }}
+
+<!-- MENÜ -->
+{{- with $s.menue }}
+<section id="menue" class="trennlinie">
+  <p class="section-label fade-in" data-dialekt="{{ .label_dialekt }}">{{ .label }}</p>
+  <h2 class="fade-in fade-in-2" data-dialekt="{{ .titel_dialekt }}">{{ .titel | safeHTML }}</h2>
+  <div class="divider fade-in fade-in-3"></div>
+  <p class="lead fade-in fade-in-3" data-dialekt="{{ .lead_dialekt }}">{{ .lead }}</p>
+
+  {{- with .banner }}
+  <div class="bratl-banner fade-in fade-in-4">
+    <svg class="bratl-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M3 11h18M3 11c0-3.31 2.69-6 6-6h6c3.31 0 6 2.69 6 6M3 11v5a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-5"/>
+      <path d="M8 11V7M16 11V7M12 5V3"/>
+    </svg>
+    <span class="bratl-text"><span data-dialekt="{{ $.Params.menue.banner_dialekt }}">{{ . }}</span>
+      {{- with $.Params.menue.banner_sub }} <span class="bratl-sub" data-dialekt="{{ $.Params.menue.banner_sub_dialekt }}">{{ . }}</span>{{ end }}</span>
+  </div>
+  {{- end }}
+
+  {{- $kategorien := site.Data.speisekarte.kategorien }}
+  <div class="menu-columns">
+    {{- range $spalte := slice 1 2 }}
+    <div>
+      {{- range $i, $k := $kategorien }}
+      {{- if eq (int ($k.spalte | default 1)) $spalte }}
+      <div class="menu-category" style="--mobil-reihenfolge: {{ $i }}">
+        <h3>{{ $k.name }}</h3>
+        {{- range $k.gerichte }}
+        <div class="menu-item">
+          <div>
+            <div class="menu-item-name">{{ .name }}{{ range .tags }} <span class="menu-tag">{{ . }}</span>{{ end }}</div>
+            {{- with .beschreibung }}<div class="menu-item-desc">{{ . }}</div>{{ end }}
+            {{- with .hinweis }}<div class="menu-item-desc">{{ . }}</div>{{ end }}
+            {{- with .varianten }}
+            <div class="menu-variants">
+              {{- range . }}
+              <div class="menu-variant">
+                <span class="menu-variant-label">{{ .name }}{{ range .tags }} <span class="menu-tag">{{ . }}</span>{{ end }}</span>
+                <span class="menu-variant-price">{{ partial "preis.html" .preis }}</span>
+              </div>
+              {{- end }}
+            </div>
+            {{- end }}
+          </div>
+          {{- with .preis }}<div class="menu-item-price">{{ partial "preis.html" . }}</div>{{ end }}
+        </div>
+        {{- end }}
+      </div>
+      {{- end }}
+      {{- end }}
+    </div>
+    {{- end }}
+  </div>
+
+  <div class="menu-note">
+    {{ .hinweis | safeHTML }}
+    {{- with .getraenke_link }}
+    <br><span class="menu-note-link" data-dialekt="{{ $.Params.menue.getraenke_link_dialekt }}">{{ . | safeHTML }}</span>
+    {{- end }}
+  </div>
+</section>
+{{- end }}
+
+<!-- GETRÄNKEEMPFEHLUNGEN -->
+{{- with $s.getraenke }}
+{{- $daten := site.Data.getraenke }}
+<section id="getraenke" class="trennlinie">
+  <p class="section-label fade-in" data-dialekt="{{ .label_dialekt }}">{{ .label }}</p>
+  <h2 class="fade-in fade-in-2" data-dialekt="{{ .titel_dialekt }}">{{ .titel | safeHTML }}</h2>
+  <div class="divider fade-in fade-in-3"></div>
+  <p class="lead fade-in fade-in-3" data-dialekt="{{ .lead_dialekt }}">{{ .lead }}</p>
+
+  <div class="getraenke-liste">
+    {{- range $i, $e := $daten.empfehlungen }}
+    <div class="getraenke-item fade-in fade-in-{{ add 2 (div $i 2) | math.Min 4 }}">
+      <p class="getraenke-anlass" data-dialekt="{{ .anlass_dialekt }}">{{ .anlass }}</p>
+      {{- range .getraenke }}
+      <div class="getraenke-zeile">
+        <span class="getraenke-name">{{ .name }}</span>
+        <span class="getraenke-preis">{{ partial "preis.html" .preis }}</span>
+      </div>
+      {{- end }}
+      {{- with .beschreibung }}
+      <p class="getraenke-desc" data-dialekt="{{ $e.beschreibung_dialekt }}">{{ . }}</p>
+      {{- end }}
+    </div>
+    {{- end }}
+  </div>
+
+  {{- with $daten.partner }}
+  {{- with resources.Get .logo }}
+  {{- $logo := .Resize "400x png" }}
+  <div class="partner-block fade-in">
+    <p class="partner-label" data-dialekt="{{ $daten.partner.label_dialekt }}">{{ $daten.partner.label }}</p>
+    <img class="partner-logo" src="{{ $logo.RelPermalink }}" width="{{ div $logo.Width 2 }}" height="{{ div $logo.Height 2 }}" alt="{{ $daten.partner.alt }}" loading="lazy">
+  </div>
+  {{- end }}
+  {{- end }}
+</section>
+{{- end }}
+
+<!-- TEAM -->
+{{- with $s.team }}
+<section id="team" class="trennlinie">
+  <p class="section-label fade-in" data-dialekt="{{ .label_dialekt }}">{{ .label }}</p>
+  <h2 class="fade-in fade-in-2" data-dialekt="{{ .titel_dialekt }}">{{ .titel | safeHTML }}</h2>
+  <div class="divider fade-in fade-in-3"></div>
+  <p class="lead fade-in fade-in-3" data-dialekt="{{ .lead_dialekt }}">{{ .lead }}</p>
+
+  <div class="team-grid">
+    {{- range $m := site.Data.team.mitglieder }}
+    <div class="team-card fade-in fade-in-2">
+      <div class="team-photo">
+        {{- with resources.Get .foto }}
+        {{- $foto := .Fill "720x960 jpg q80 Center" }}
+        <img src="{{ $foto.RelPermalink }}" width="{{ $foto.Width }}" height="{{ $foto.Height }}" alt="{{ $m.name }} – {{ $m.rolle }}" loading="lazy">
+        {{- end }}
+      </div>
+      <p class="team-name">{{ .name }}</p>
+      <p class="team-role" data-dialekt="{{ .rolle_dialekt }}">{{ .rolle }}</p>
+      <p class="team-bio" data-dialekt="{{ .bio_dialekt }}">{{ .bio }}</p>
+    </div>
+    {{- end }}
+  </div>
+</section>
+{{- end }}
+
+<!-- BEWERTUNGEN -->
+{{- with $s.bewertungen }}
+<section id="bewertungen" class="trennlinie">
+  <p class="section-label fade-in" data-dialekt="{{ .label_dialekt }}">{{ .label }}</p>
+  <h2 class="fade-in fade-in-2" data-dialekt="{{ .titel_dialekt }}">{{ .titel | safeHTML }}</h2>
+  <div class="divider fade-in fade-in-3"></div>
+
+  <div class="presse-grid">
+    {{- range $i, $b := site.Data.bewertungen.bewertungen }}
+    <figure class="presse-card fade-in fade-in-{{ add 2 (mod $i 3) }}">
+      <p class="presse-outlet">{{ .quelle }} · <span aria-label="{{ .sterne }} von 5 Sternen">{{ strings.Repeat (int .sterne) "★" }}</span></p>
+      <blockquote class="presse-quote">{{ .text }}</blockquote>
+      <figcaption class="presse-year">{{ .autor }} · {{ .jahr }}</figcaption>
+    </figure>
+    {{- end }}
+  </div>
+
+  <div class="zentriert">
+    <a href="{{ $p.googleBewertungen }}" target="_blank" rel="noopener" class="btn-ghost" data-dialekt="{{ .button_dialekt }}">{{ .button }}</a>
+  </div>
+</section>
+{{- end }}
+
+<!-- KONTAKT -->
+{{- with $s.kontakt }}
+<section id="kontakt" class="trennlinie">
+  <p class="section-label fade-in" data-dialekt="{{ .label_dialekt }}">{{ .label }}</p>
+  <h2 class="fade-in fade-in-2" data-dialekt="{{ .titel_dialekt }}">{{ .titel | safeHTML }}</h2>
+  <div class="divider fade-in fade-in-3"></div>
+
+  <div class="kontakt-grid">
+    <div>
+      <div class="kontakt-block fade-in fade-in-2">
+        <h3 data-dialekt="Adress'n">Adresse</h3>
+        <p>{{ $p.strasse }}<br>{{ $p.plz }} {{ $p.ort }}<br>{{ $p.land }}</p>
+      </div>
+      <div class="kontakt-block fade-in fade-in-3">
+        <h3>Telefon</h3>
+        <a href="tel:{{ $p.telefon }}">{{ $p.telefonAnzeige }}</a>
+      </div>
+      <div class="kontakt-block fade-in fade-in-3">
+        <h3>E-Mail</h3>
+        <a href="mailto:{{ $p.email }}">{{ $p.email }}</a>
+      </div>
+      <div class="kontakt-block fade-in fade-in-4">
+        <h3>Social Media</h3>
+        <a href="{{ $p.instagram }}" target="_blank" rel="noopener">Instagram</a>
+      </div>
+    </div>
+    <div class="map fade-in fade-in-4">
+      <iframe src="{{ $p.googleMapsEmbed }}" title="Lageplan: {{ $p.strasse }}, {{ $p.plz }} {{ $p.ort }}" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+</section>
+{{- end }}
+{{ end }}

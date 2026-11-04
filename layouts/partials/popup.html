@@ -1,0 +1,22 @@
+{{- /* Zeitgesteuertes Hinweis-Popup. Inhalte: data/hinweise.yaml. Ob ein Eintrag gerade
+       aktiv ist, entscheidet das Script im Browser – so verschwindet es auch ohne neuen Build. */ -}}
+{{- $eintraege := slice -}}
+{{- range partial "urlaub-daten.html" . -}}
+  {{- $eintraege = $eintraege | append (dict "label" "Hinweis" "text" (printf "Wir machen Urlaub von <span>%s</span>" .kurz) "von" .popup_ab "bis" .bis_exklusiv) -}}
+{{- end -}}
+{{- range site.Data.hinweise.popups -}}
+  {{- $von := "" }}{{ with .von }}{{ $von = (time.AsTime .).Format "2006-01-02" }}{{ end -}}
+  {{- $bis := "" }}{{ with .bis }}{{ $bis = ((time.AsTime .).AddDate 0 0 1).Format "2006-01-02" }}{{ end -}}
+  {{- $eintraege = $eintraege | append (dict "label" (.label | default "") "text" .text "von" $von "bis" $bis) -}}
+{{- end -}}
+{{- with $eintraege }}
+<div id="infoPopup" class="info-popup" role="dialog" aria-modal="true" aria-labelledby="infoPopupText" hidden>
+  <div class="info-popup__backdrop" data-popup-close></div>
+  <div class="info-popup__box">
+    <button type="button" class="info-popup__close" aria-label="Hinweis schließen" data-popup-close>&times;</button>
+    <p class="info-popup__label" id="infoPopupLabel"></p>
+    <p id="infoPopupText" class="info-popup__text"></p>
+  </div>
+  <script type="application/json" id="infoPopupDaten">{{ . | jsonify | safeJS }}</script>
+</div>
+{{- end }}

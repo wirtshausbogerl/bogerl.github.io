@@ -1,0 +1,66 @@
+# Getränkeempfehlungen
+# "dialekt"-Felder = Text im Dialekt-Modus (Easter Egg über das Bierkrug-Symbol)
+empfehlungen:
+  - anlass: Zum Start
+    anlass_dialekt: Zum Stoatn
+    getraenke:
+      - name: Bogerl Aperitif
+        preis: "€ 6,50"
+    beschreibung: Alkoholfrei – unser Namensgeber zum Anstoßen.
+    beschreibung_dialekt: Ohne Alkohol – unsa Namensgeba zum Ostoßn.
+
+  - anlass: Aus dem Weinglas · Weiß
+    anlass_dialekt: Aus'm Weiß-Glasl
+    getraenke:
+      - name: Grüner Veltliner „Löss"
+        preis: "€ 4,20 / 24"
+    beschreibung: Weingut Hindler · der Klassiker zum Schnitzel.
+    beschreibung_dialekt: Weingut Hindler · da Klassika zum Schnitzerl.
+
+  - anlass: Aus dem Weinglas · Rot
+    anlass_dialekt: Aus'm Rot-Glasl
+    getraenke:
+      - name: Cabernet Sauvignon
+        preis: "€ 5,20 / 30"
+    beschreibung: Weingut Wellanschitz · passt zum Schmorgericht.
+    beschreibung_dialekt: Weingut Wellanschitz · passt zum gschmortn Schmorgericht.
+
+  - anlass: Frisch gezapft
+    anlass_dialekt: Frisch zapft
+    getraenke:
+      - name: Freistädter Junghopfenpils
+        preis: "ab € 3,50"
+    beschreibung: Von der Braucommune Freistadt – hopfig & frisch.
+    beschreibung_dialekt: Vo da Braucommune Freistod – hopfig & frisch.
+
+  - anlass: Heimat im Glas
+    anlass_dialekt: Hoamat im Glasl
+    getraenke:
+      - name: Most
+        preis: "pur € 4,00 · gespritzt € 3,50"
+    beschreibung: Pur oder gespritzt – ehrlich und bodenständig.
+    beschreibung_dialekt: Pur oda gspritzt – echt boanstänsig.
+
+  - anlass: Zum Abschluss
+    anlass_dialekt: Zum Obschluss
+    getraenke:
+      - name: Hausgemachter Limoncello
+        preis: "2 cl € 3,20 · 4 cl € 5,50"
+    beschreibung: Selbstgemacht – auch als Spritz erhältlich.
+    beschreibung_dialekt: Söwa gmocht – a aa ois Spritz zum hom.
+
+  - anlass: Stilvoller Ausklang
+    anlass_dialekt: Sprit
+    getraenke:
+      - name: Reisetbauer Sloeberry Gin mit Fever-Tree Tonic
+        preis: "€ 9,90"
+      - name: Reisetbauer Blue Gin mit Thomas Henry Tonic
+        preis: "€ 9,90"
+      - name: Monkey 47 mit Thomas Henry Tonic
+        preis: "€ 13,90"
+
+partner:
+  label: Stolzer Partner von
+  label_dialekt: Stoiza Partner vo
+  logo: images/partner/freistaedter-logo.png
+  alt: Freistädter Bier – Braucommune in Freistadt

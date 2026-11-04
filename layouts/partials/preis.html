@@ -1,0 +1,10 @@
+{{- /* 8 → "€ 8", 8.5 → "€ 8,50", Text wird unverändert übernommen */ -}}
+{{- $preis := . -}}
+{{- if ne (printf "%T" .) "string" -}}
+  {{- if eq (float .) (float (int .)) -}}
+    {{- $preis = printf "€ %d" (int .) -}}
+  {{- else -}}
+    {{- $preis = printf "€ %s" (replace (printf "%.2f" (float .)) "." ",") -}}
+  {{- end -}}
+{{- end -}}
+{{- return $preis -}}

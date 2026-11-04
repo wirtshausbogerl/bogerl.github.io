@@ -1,0 +1,60 @@
+# Domain muss zur Datei static/CNAME passen
+baseURL = "https://wirtshausbogerl.at/"
+languageCode = "de-AT"
+defaultContentLanguage = "de"
+title = "s'Bogerl"
+
+# Alte Adressen wie /impressum.html bleiben gültig
+uglyURLs = true
+
+disableKinds = ["taxonomy", "term", "RSS"]
+enableRobotsTXT = true
+
+[sitemap]
+  changeFreq = "monthly"
+
+[minify]
+  minifyOutput = true
+
+[imaging]
+  quality = 80
+  resampleFilter = "Lanczos"
+
+# ─── Stammdaten: werden auf allen Seiten (Startseite, Impressum,
+#     Datenschutz, Suchmaschinen-Daten) aus dieser einen Stelle gelesen ───
+[params]
+  description = "s'Bogerl – Wirtshaus in Steyr. Österreichische Küche, klassisch verwurzelt und modern interpretiert. Stelzhamerstraße 1a, 4400 Steyr. Reservierung: +43 660 6854103."
+  keywords = "Wirtshaus Steyr, Restaurant Steyr, s'Bogerl, Bogerl Steyr, österreichische Küche Steyr, Gasthaus Steyr, essen in Steyr, Stelzhamerstraße"
+  slogan = "Klassisch verwurzelt. Modern interpretiert."
+  themeColor = "#2e4a32"
+
+  firma = "Wirtshaus`Bogerl OG"
+  vertretung = ["Kevin Pessl", "Philip Obergruber"]
+  strasse = "Stelzhamerstraße 1a"
+  plz = "4400"
+  ort = "Steyr"
+  land = "Österreich"
+  telefon = "+436606854103"
+  telefonAnzeige = "+43 660 6854103"
+  email = "wirtshaus.bogerl@gmx.at"
+  instagram = "https://www.instagram.com/wirtshaus_sbogerl/"
+  googleBewertungen = "https://www.google.com/maps/place/Wirtshaus+s'Bogerl/@48.0368889,14.412395,17z/data=!3m1!5s0x4773c5f6b2ac15d5:0x8c277f40bff86c!4m18!1m9!3m8!1s0x4773c5000630f5a7:0xda8165897ee45f0b!2sWirtshaus+s'Bogerl!8m2!3d48.0368889!4d14.412395!9m1!1b1!16s%2Fg%2F11z42dm4bd!3m7!1s0x4773c5000630f5a7:0xda8165897ee45f0b!8m2!3d48.0368889!4d14.412395!9m1!1b1!16s%2Fg%2F11z42dm4bd?hl=de"
+  googleMapsEmbed = "https://www.google.com/maps?q=s%27Bogerl+Stelzhamerstra%C3%9Fe+1a+4400+Steyr&output=embed"
+  lat = 48.0369
+  lon = 14.4124
+
+  uid = "ATU83164709"
+  firmenbuchnummer = "FN 676126d"
+  firmenbuchgericht = "Landesgericht Steyr"
+  aufsichtsbehoerde = "Bezirkshauptmannschaft Steyr-Land"
+
+[markup.goldmark.renderer]
+  unsafe = false
+
+[markup.goldmark.parser.attribute]
+  block = true
+
+# Keine automatischen „typografischen" Anführungszeichen – sonst sähe s'Bogerl
+# auf Impressum/Datenschutz anders aus als auf der Startseite
+[markup.goldmark.extensions.typographer]
+  disable = true

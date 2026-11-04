@@ -1,0 +1,14 @@
+# Team – Fotos liegen in assets/images/team/
+mitglieder:
+  - name: Kevin Pessl
+    rolle: Küche
+    rolle_dialekt: Küch
+    foto: images/team/kevin.jpeg
+    bio: Leidenschaft für die österreichische Küche, verfeinert durch regionale Zutaten und handwerkliches Können.
+    bio_dialekt: Mit Leidnschoft fia de österreichische Küch, gschliffn mit Soch'n vo do daham und mit'n richtign Hondwerk.
+  - name: Philip Obergruber
+    rolle: Service
+    rolle_dialekt: Service
+    foto: images/team/philip.jpeg
+    bio: Herzlichkeit als Philosophie. Er sorgt dafür, dass sich jeder Gast von Anfang an willkommen fühlt.
+    bio_dialekt: Herzlichkeit als Philosophie. Er schaut, dass si a jeda Gost vo Aufang o wuihfühlt.

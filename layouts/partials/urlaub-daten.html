@@ -1,0 +1,16 @@
+{{- /* Bereitet data/hinweise.yaml → urlaub auf. "bis_exklusiv" ist der erste Tag, an dem ein Eintrag verschwindet. */ -}}
+{{- $wochentage := slice "So." "Mo." "Di." "Mi." "Do." "Fr." "Sa." -}}
+{{- $liste := slice -}}
+{{- range site.Data.hinweise.urlaub -}}
+  {{- $von := time.AsTime .von -}}
+  {{- $bis := time.AsTime .bis -}}
+  {{- $popupAb := $von.AddDate 0 0 -14 -}}
+  {{- with .popup_ab }}{{ $popupAb = time.AsTime . }}{{ end -}}
+  {{- $liste = $liste | append (dict
+    "zeitraum" (printf "%s %s – %s %s" (index $wochentage (int $von.Weekday)) ($von.Format "02.01.") (index $wochentage (int $bis.Weekday)) ($bis.Format "02.01."))
+    "kurz" (printf "%s bis %s" ($von.Format "02.01.") ($bis.Format "02.01."))
+    "popup_ab" ($popupAb.Format "2006-01-02")
+    "bis_exklusiv" (($bis.AddDate 0 0 1).Format "2006-01-02")
+  ) -}}
+{{- end -}}
+{{- return $liste -}}

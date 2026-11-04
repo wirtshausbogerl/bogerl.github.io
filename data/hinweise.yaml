@@ -1,0 +1,17 @@
+# ─── Betriebsurlaub ───
+# Jeder Eintrag erscheint automatisch
+#   · im Bereich "Öffnungszeiten → Urlaub" bis einschließlich "bis"
+#   · als Popup ab "popup_ab" (Standard: 14 Tage vor "von") bis einschließlich "bis"
+# Vergangene Einträge blenden sich von selbst aus und können gelöscht werden.
+urlaub:
+  - von: 2026-09-09
+    bis: 2026-09-24
+    # popup_ab: 2026-09-01
+
+# ─── Sonstige Popups (z. B. Neueröffnung, Feiertage) ───
+# <span>…</span> im Text = goldene Hervorhebung
+popups: []
+#  - label: Wir freuen uns auf euch
+#    text: Neueröffnung am <span>04.06.</span>!
+#    von: 2026-05-20
+#    bis: 2026-06-03
