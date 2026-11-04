@@ -1,0 +1,16 @@
+bewertungen:
+  - quelle: Google
+    sterne: 5
+    text: Gute Küche, nettes Ambiente und sehr freundlicher Service.
+    autor: Tobias H.
+    jahr: 2026
+  - quelle: Google
+    sterne: 5
+    text: Essen perfekt, Bewirtung sehr freundlich, Ambiente gemütlich.
+    autor: Gerold F.
+    jahr: 2026
+  - quelle: Google
+    sterne: 5
+    text: Sehr gute Küche, guter Service, gemütliche Atmosphäre, freundliche Wirtsleut.
+    autor: Werner F.
+    jahr: 2026

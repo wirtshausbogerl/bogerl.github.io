@@ -1,0 +1,16 @@
+# Öffnungszeiten – "zeiten" leer lassen (oder weglassen) = Ruhetag
+tage:
+  - tag: Montag
+    zeiten: ["11:00 – 14:30", "17:30 – 22:00"]
+  - tag: Dienstag
+    zeiten: ["11:00 – 14:30", "17:30 – 22:00"]
+  - tag: Mittwoch
+  - tag: Donnerstag
+  - tag: Freitag
+    zeiten: ["17:00 – 22:00"]
+  - tag: Samstag
+    zeiten: ["11:00 – 22:00"]
+  - tag: Sonntag
+    zeiten: ["11:00 – 22:00"]
+
+warme_kueche: ["11:30 – 14:00", "17:30 – 20:00"]
