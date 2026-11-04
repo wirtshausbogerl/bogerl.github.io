@@ -1,0 +1,28 @@
+{{- /* Schema.org-Daten für Suchmaschinen – Öffnungszeiten kommen aus data/oeffnungszeiten.yaml */ -}}
+{{- $p := site.Params -}}
+{{- $tage := dict "Montag" "Monday" "Dienstag" "Tuesday" "Mittwoch" "Wednesday" "Donnerstag" "Thursday" "Freitag" "Friday" "Samstag" "Saturday" "Sonntag" "Sunday" -}}
+{{- $hours := slice -}}
+{{- range site.Data.oeffnungszeiten.tage -}}
+  {{- $tag := index $tage .tag -}}
+  {{- range .zeiten -}}
+    {{- $teile := split (replace . " " "") "–" -}}
+    {{- $hours = $hours | append (dict "@type" "OpeningHoursSpecification" "dayOfWeek" $tag "opens" (index $teile 0) "closes" (index $teile 1)) -}}
+  {{- end -}}
+{{- end -}}
+{{- $schema := dict
+  "@context" "https://schema.org"
+  "@type" "Restaurant"
+  "name" site.Title
+  "alternateName" (printf "Wirtshaus %s" site.Title)
+  "description" (printf "Wirtshaus in %s. Österreichische Küche, klassisch verwurzelt und modern interpretiert." $p.ort)
+  "url" site.BaseURL
+  "telephone" $p.telefonAnzeige
+  "email" $p.email
+  "servesCuisine" (slice "Österreichisch" "Wirtshausküche")
+  "priceRange" "€€"
+  "address" (dict "@type" "PostalAddress" "streetAddress" $p.strasse "addressLocality" $p.ort "postalCode" $p.plz "addressCountry" "AT")
+  "geo" (dict "@type" "GeoCoordinates" "latitude" $p.lat "longitude" $p.lon)
+  "openingHoursSpecification" $hours
+  "sameAs" (slice $p.instagram)
+-}}
+<script type="application/ld+json">{{ $schema | jsonify | safeJS }}</script>

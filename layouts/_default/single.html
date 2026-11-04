@@ -1,0 +1,11 @@
+{{ define "main" }}
+<main class="prose">
+  {{- with .Params.label }}<p class="section-label">{{ . }}</p>{{ end }}
+  <h1><em>{{ .Title }}</em></h1>
+  <div class="divider"></div>
+
+  {{ .Content }}
+
+  {{- with .Params.stand }}<p class="stand">Stand: {{ . }}</p>{{ end }}
+</main>
+{{ end }}

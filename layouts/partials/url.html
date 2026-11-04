@@ -1,0 +1,2 @@
+{{- /* Absolute Adresse einer Seite; die Startseite ist "/" statt "/index.html" (wegen uglyURLs) */ -}}
+{{- return cond .IsHome site.BaseURL .Permalink -}}

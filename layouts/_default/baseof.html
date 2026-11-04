@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="de" class="no-js">
+<head>
+{{ partial "head.html" . }}
+</head>
+<body class="{{ if .IsHome }}page-home{{ else }}page-sub{{ end }}">
+
+{{ if .IsHome }}{{ partial "popup.html" . }}{{ end }}
+
+{{ partial "header.html" . }}
+
+{{ block "main" . }}{{ end }}
+
+{{ partial "footer.html" . }}
+
+{{ $js := resources.Get "js/main.js" | js.Build (dict "minify" true) | fingerprint }}
+<script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" defer></script>
+</body>
+</html>
